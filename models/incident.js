@@ -14,3 +14,6 @@ var IncidentSchema = new Schema({
 IncidentSchema.virtual('url').get(function(){
     return '/form/incident/' + this._id;
 })
+
+// Export model.
+module.exports = mongoose.model('Incident', IncidentSchema);

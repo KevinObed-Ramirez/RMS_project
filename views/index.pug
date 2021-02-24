@@ -1,5 +1,42 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+head
+	meta(name="“viewport”", content="“width=device-width,", initial-scale='1.0"')
+	meta(charset="“utf-8”")
+	title Login / Sign Up Form
+	link(rel="“shortcut", icon”, href="“")
+	link(rel="“stylesheet”", href="“index.css”")
+body
+	div(class="“container”")
+		form#“login”(class="“form”")
+			h1(class="“form__title”") Login
+			div(class="“form__message", form__message--error”)
+			div(class="“form__input-group”")
+				input(type="“text”", class="“form__input”", autofocus, placeholder="“Username", or, email”)
+				div(class="“form__input-error-message”")
+			div(class="“form__input-group”")
+				input(type="“password”", class="“form__input”", autofocus, placeholder="“Password”")
+				div(class="“form__input-error-message”")
+			button(class="“form__button”", type="“submit”") Continue
+			p(class="“form__text”")
+				a(href="“#”", class="“form__link”") Forgot your password?
+			p(class="“form__text”")
+				a(class="“form__link”", href="“.") Don’t have an account? Create account
+		form#“createAccount”(class="“form", form--hidden”)
+			h1(class="“form__title”") Create Account
+			div(class="“form__message", form__message--error”)
+			div(class="“form__input-group”")
+				input#“signupUsername”(type="“text”", class="“form__input”", autofocus, placeholder="“Username”")
+				div(class="“form__input-error-message”")
+			div(class="“form__input-group”")
+				input(type="“text”", class="“form__input”", autofocus, placeholder="“Email", Address”)
+				div(class="“form__input-error-message”")
+			div(class="“form__input-group”")
+				input(type="“password”", class="“form__input”", autofocus, placeholder="“Password”")
+				div(class="“form__input-error-message”")
+			div(class="“form__input-group”")
+				input(type="“password”", class="“form__input”", autofocus, placeholder="“Confirm", password”)
+				div(class="“form__input-error-message”")
+			button(class="“form__button”", type="“submit”") Continue
+			p(class="“form__text”")
+				a(class="“form__link”", href="“.") Already have an account? Sign in
+	script(src="“index.js”")
