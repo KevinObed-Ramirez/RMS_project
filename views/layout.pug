@@ -1,7 +1,21 @@
-doctype html
-html
-  head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body
-    block content
+.input-group.mb-3
+  span#basic-addon1.input-group-text @
+  input.form-control(type='text', placeholder='Username', aria-label='Username', aria-describedby='basic-addon1')
+.input-group.mb-3
+  input.form-control(type='text', placeholder="Recipient's username", aria-label="Recipient's username", aria-describedby='basic-addon2')
+  span#basic-addon2.input-group-text @example.com
+label.form-label(for='basic-url') Your vanity URL
+.input-group.mb-3
+  span#basic-addon3.input-group-text https://example.com/users/
+  input#basic-url.form-control(type='text', aria-describedby='basic-addon3')
+.input-group.mb-3
+  span.input-group-text $
+  input.form-control(type='text', aria-label='Amount (to the nearest dollar)')
+  span.input-group-text .00
+.input-group.mb-3
+  input.form-control(type='text', placeholder='Username', aria-label='Username')
+  span.input-group-text @
+  input.form-control(type='text', placeholder='Server', aria-label='Server')
+.input-group
+  span.input-group-text With textarea
+  textarea.form-control(aria-label='With textarea')
