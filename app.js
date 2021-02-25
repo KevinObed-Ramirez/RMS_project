@@ -17,7 +17,7 @@ var app = express();
 app.use(helmet());
 //Set up mongoose connection
 var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://KoolSwag44:givemethemoney@cluster0.7cszg.mongodb.net/Cluster0?retryWrites=true&w=majority';
+var dev_db_url = 'mongodb+srv://John:ineedthemoney@cluster0.inuc5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 var mongoDB = process.env.URI || dev_db_url;
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
