@@ -10,11 +10,11 @@ var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" 
 const dotenv = require('dotenv');
 const result = dotenv.config();
 var compression = require('compression');
-var helmet = require('helmet');
+// var helmet = require('helmet');
 
 var app = express();
 
-app.use(helmet());
+// app.use(helmet());
 //Set up mongoose connection
 var mongoose = require('mongoose');
 var dev_db_url = 'mongodb+srv://KoolSwag44:givemethemoney@cluster0.7cszg.mongodb.net/Cluster0?retryWrites=true&w=majority';
