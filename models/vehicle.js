@@ -4,17 +4,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var VehicleSchema = new Schema({
-    vehicle_make:{},
-    vehicle_model:{},
-    vehicle_plate:{},
-    vehicle_year:{},
-    vehicle_miles:{},
-    vehicle_title:{},
-    vehicle_color:{},
-    vehcile_vin:{},
-    vehicle_details:{},
-    vehicle_registration:{},
-    vehicle_body:{}
+    vehicle_make:{type: String, maxlength: 30},
+    vehicle_model:{type: String, maxlength: 30},
+    vehicle_plate:{type: String, maxlength: 7},
+    vehicle_year:{ type: String, maxlength: 4},
+    vehcile_vin:{ type: String, maxlength: 17},
+    vehicle_details:{type: String, maxlength: 100},
+    vehicle_reg:{type: String, maxlength: 100},
+    vehicle_body:{type: String,  maxlength: 2}
 
 
 });
