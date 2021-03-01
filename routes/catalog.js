@@ -1,6 +1,6 @@
 var express = require('express');
 const { route } = require('.');
-const { model } = require('#');
+const { model } = require('../../../year2/RMS_project/models/incident');
 var router = express.Router();
 
 //require mods
