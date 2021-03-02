@@ -1,38 +1,6 @@
-form.row.g-3
-  .col-md-4
-    label.form-label(for='validationServer01') First name
-    input#validationServer01.form-control.is-valid(type='text', value='Mark', required='')
-    .valid-feedback
-      looks good!
-  .col-md-4
-    label.form-label(for='validationServer02') Last name
-    input#validationServer02.form-control.is-valid(type='text', value='Otto', required='')
-    .valid-feedback
-      looks good!
-  .col-md-4
-    label.form-label(for='validationServerUsername') Username
-    .input-group.has-validation
-      span#inputGroupPrepend3.input-group-text @
-      input#validationServerUsername.form-control.is-invalid(type='text', aria-describedby='inputGroupPrepend3 validationServerUsernameFeedback', required='')
-      #validationServerUsernameFeedback.invalid-feedback
-        please choose a username.
-  .col-md-6
-    label.form-label(for='validationServer03') City
-    input#validationServer03.form-control.is-invalid(type='text', aria-describedby='validationServer03Feedback', required='')
-    #validationServer03Feedback.invalid-feedback
-      please provide a valid city.
-  .col-md-3
-    label.form-label(for='validationServer04') State
-    select#validationServer04.form-select.is-invalid(aria-describedby='validationServer04Feedback', required='')
-      option(selected='', disabled='', value='') Choose...
-      option ...
-    #validationServer04Feedback.invalid-feedback
-      please select a valid state.
-  .col-md-3
-    label.form-label(for='validationServer05') Zip
-    input#validationServer05.form-control.is-invalid(type='text', aria-describedby='validationServer05Feedback', required='')
-    #validationServer05Feedback.invalid-feedback
-      please provide a valid zip.
-  .col-12
-    .form-check
-      input#invalidCheck3.form-check-input.is-invalid(type='checkbox', value='', aria-describedby='invalidCheck3Feedback', required='')
+extends layout
+
+block content
+  h1= message
+  h2= error.status
+  pre #{error.stack}

@@ -15,14 +15,17 @@ var compression = require('compression');
 var app = express();
 
 // app.use(helmet());
+
 //Set up mongoose connection
-var mongoose = require('mongoose');
-var dev_db_url = 'mongodb+srv://John:ineedthemoney@cluster0.inuc5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
-var mongoDB = process.env.URI || dev_db_url;
-mongoose.Promise = global.Promise;
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://KoolSwag44:ineedthemoney@cluster0.inuc5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

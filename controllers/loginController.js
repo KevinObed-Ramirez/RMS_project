@@ -1,3 +1,4 @@
+
 var Incident = require('../models/incident');
 var People = require('../models/people');
 var Vehicle = require('../models/vehicle');
@@ -9,6 +10,6 @@ var Vehicle = require('../models/vehicle');
 // };
 
 //!!! it doesnt match up. not what we want
-exports.index = function(res, req){
-    res.render('index');
+exports.index = function (res, req) {
+    res.reder('index');
 }

@@ -12,6 +12,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-generator": "^4.16.1",
+    "express-validator": "^6.10.0",
     "http-errors": "^1.8.0",
     "luxon": "^1.26.0",
     "mongoose": "^5.11.18",
