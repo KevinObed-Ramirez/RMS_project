@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "async": "^3.2.0",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "debug": "^2.6.9",
@@ -18,9 +19,9 @@
     "mongoose": "^5.11.18",
     "morgan": "^1.10.0",
     "path": "^0.12.7",
-    "pug": "^3.0.0"
+    "pug": "^3.0.2"
   },
   "devDependencies": {
-    "jest": "^24.8.0"
+    "jest": "^24.9.0"
   }
 }
