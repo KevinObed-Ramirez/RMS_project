@@ -1,0 +1,104 @@
+h1
+  header(style="text-align: center;") Vehicle/bike Information
+form(class="row g-3 needs-validation", novalidate)
+  div(class="col-3", style="margin-left: 1000px;")
+    button(class="btn btn-primary", type="submit") Submit form
+  div(class="col-sm-4 mx-auto")
+    label(for="validationCustom01", class="form-label") Vehicle #
+    input#validationCustom01(type="text", class="form-control", value="Mark", required)
+    div(class="valid-feedback")
+      | Looks good!
+  div(class="col-sm-4 mx-auto")
+    label(for="validationCustom02", class="form-label") Vin/Serial
+    input#validationCustom02(type="text", class="form-control", value="Otto", required)
+    div(class="valid-feedback")
+      | Looks good!
+  div(class="col-sm-4 mx-auto")
+    label(for="validationCustomUsername", class="form-label") License/State
+    div(class="input-group has-validation")
+      input#validationCustomUsername(type="text", class="form-control", aria-describedby="inputGroupPrepend", required)
+      div(class="invalid-feedback")
+        | Please choose a username.
+  div(class="col-sm-6 mx-auto")
+    label(for="validationCustom04", class="form-label") Makes
+    select#validationCustom04(class="form-select", required)
+      option(selected, disabled, value="") Choose
+      option Acura
+      option Alfa-Romeo
+      option Aston-Martin
+      option Audi
+      option Bentley
+      option BMW
+      option Bugatti
+      option Buick
+      option Cadillac
+      option Chevrolet
+      option Chrysler
+      option Citroen
+      option Dodge
+      option Ferrari
+      option Fiat
+      option Ford
+      option Geely
+      option Genesis
+      option GMC
+      option Honda
+      option Hyundai
+      option Ininiti
+      option Jaguar
+      option Jeep
+      option Kia
+      option Koenigsegg
+      option Lamborghini
+      option Lancia
+      option Land Rover
+      option Lexus
+      option Lincoln
+      option Lotus
+      option Maserati
+      option Maybach
+      option Mazda
+      option McLaren
+      option Mercedes
+      option Mini
+      option Mitsubishi
+      option Nissan
+      option Opel
+      option Pagani
+      option Peugeot
+      option Pontiac
+      option Porsche
+      option Ram
+      option Renault
+      option Roll-Royce
+      option Skoda
+      option Smart
+      option Subaru
+      option Susuki
+      option Tesla
+      option Toyota
+      option Volkswagen
+      option Volvo
+  div(class="col-sm-3 mx-auto")
+    label(for="validationCustom02", class="form-label") Year
+    input#validationCustom02(type="text", class="form-control", value="Otto", required)
+  div(class="col-sm-3 mx-auto")
+    label(for="validationCustom05", class="form-label") Model
+    input#validationCustom05(type="text", class="form-control", required)
+  div(class="col-sm-3 mx-auto")
+    label(for="validationCustom05", class="form-label") Style
+    input#validationCustom05(type="text", class="form-control", required)
+  div(class="col-sm-3 mx-auto")
+    label(for="validationCustom04", class="form-label") Color
+    select#validationCustom04(class="form-select", required)
+      option(selected, disabled, value="") Choose
+      option White
+      option Blue
+      option Red
+      option Silver
+      option Orange
+      option Green
+      option Bronze
+      option Yellow
+      option Grey
+      option Black
