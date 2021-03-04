@@ -1,8 +1,9 @@
-var People = require('../models/people'); //authors
-var Incident = require('../models/incident'); //book
-var Vehicle = require('../models/vehicle'); //book instance
-const author = require('../../../Documents/WestMecY2/Second_semester/unit_02/express-locallibrary-tutorial-/models/author');
+var People = require('../models/people'); 
+var Incident = require('../models/incident'); 
+var Vehicle = require('../models/vehicle'); 
 const { validationResult } = require('express-validator');
+// var async = require('async');
+
 
 exports.index = function(req, res){
     async.parallel({
@@ -24,7 +25,7 @@ exports.index = function(req, res){
         });
     });
 };
-
+//display list of all incidents
 exports.inc_list = function(req, res, next){
     Incident.find({}, 'incident report number')
     .populate('incident')
@@ -41,41 +42,43 @@ exports.inc_list = function(req, res, next){
 //dispay detail page for a specific incident
 exports.inc_detail = function (req, res, next){
     async.parallel({
-        inc: function(callback){
+        incident: function(callback){
             Incident.findById(req.params.id)
             .populate('people')
-            .exec(callback);
-        },
-        vehicle: function (callback){
-            Vehicle.find({'vehicle': req.params.id})
+            .populate('vehicle')
             .exec(callback);
         },
     }, function (err, results) {
         if (err) { return next(err); }
-        if (results.inc == null){ //no result
+        if (results.incident == null){ //no result
             var err = new Error('Incident not found');
             err.status = 404;
             return next(err);
         }
         //successful, so render
         res.render('inc_detail', {
-            title: results.inc.title, inc: results.inc, vehicle: results.vehicle
+            title: results.incident.title, 
+            incident: results.incident, 
         });
     });
 };
 
 //display incident create from on GET
-exports.inc_create.get = function(req, res, next){
+exports.inc_create_get = function(req, res, next){
     async.parallel({
         people: function (callback){
             People.find(callback);
         },
+        vehicle: function(callback){
+            Vehicle.find(callback);
+        },
     }, function (err, result){
-        if(err){ return nect(err); }
+        if(err){ return next(err); }
         res.render('inc_form', {
             title: 'New Incident',
             people: result.people,
-        })
+            vehicle: results.vehicle
+        });
     });
 };
 
@@ -271,8 +274,51 @@ exports.inc_update_post = [
         //create a instance object with escaped/trimmed data and old id
         var incident = new Incident(
             {
-                // left off 283:17 bookController
-            }
-        )
+                title: req.body.title,
+                people: req.body.poeple,
+                summary: req.body.summary,
+                irn: req.body.irn,
+                vehicle: (typeof req.body.vehicle === 'undefined') ? [] : req.body.vehicle,
+                _id: req.params.id //This required, or a new ID will be assigned!
+            });
+
+        if(!errors.isEmpty()){
+            // there are errors. render from again with sanitized values/error messages
+
+            //get all authors and vehicles for from
+            async.parallel({
+                poeple: function(callback){
+                    People.find(callback);
+                },
+                vehicle: function(callback){
+                    Vehicle.find(callback);
+                },
+            }, function(err, results){
+                if(err) {return next(err); }
+
+                //mark out selected vehicles as checked
+                for(let i = 0; i<results.vehicle.length; i++){
+                    if(incident.vehicle.indexOf(result.vehicle[i]._id) > -1){
+                        results.vehicle[i].checked = 'true';
+                    }
+                }
+                res.render('inc_form', {
+                    title: 'Update Incident',
+                    people: results.people, 
+                    vehicle: results.vehicle,
+                    incident: incident,
+                    errors: errors.array()
+                });
+            });
+            return;
+        }
+        else{
+            //data from is valid. update the record
+            Incident.findByIdAndUpdate(req.params.id, incident, {}, function(err, thebook){
+                if(err) { return next(err); }
+                //successful - redirect to book detail page
+                res.redirect(thebook.url);
+            });
+        }
     }
-]
+];
