@@ -8,15 +8,16 @@ var login_controller = require('../controllers/loginController');
 var incident_controller = require('../controllers/incidentController');
 var people_controller = require('../controllers/peopleController');
 var vehicle_controller = require('../controllers/vehicleController');
+const vehicle = require('../models/vehicle');
 // const people = require('../models/people');
 
 /// routes ///
 
-// GET cat home page
-router.get('/', login_controller.index);
+// GET catalog home page
+router.get('/', incident_controller.index);
 
 
-//---------- PEOPLE ROUTES ----------// 
+//---------- INCIDENTS ROUTES ----------// 
 
 // GET request fro creating poeple and incident's form
 router.get('/incident/create', incident_controller.inc_create_get);
@@ -25,31 +26,48 @@ router.get('/incident/create', incident_controller.inc_create_get);
 router.post('/incident/create', incident_controller.inc_create_post);
 
 // GET request to delete people and incident form
-router.get('incident/delete', incident_controller.inc_delete_get);
+router.get('incident/:id/delete', incident_controller.inc_delete_get);
 
 // POST request to delete people and incident form
-router.post('/incident/delete', incident_controller.inc_delete_post);
+router.post('/incident/:id/delete', incident_controller.inc_delete_post);
 
 // GET request to update people and incident form
-router.get('incident/update', incident_controller.inc_update_get);
+router.get('incident/:id/update', incident_controller.inc_update_get);
 
 // POST request to update people and incident form
-router.post('/incident/update', incident_controller.inc_update_post);
+router.post('/incident/:id/update', incident_controller.inc_update_post);
+
+//GET request for one incident
+router.get('/incident/:id', incident_controller.inc_detail);
+
+// GET request for list of all incident
+router.get('/incident', incident_controller.inc_list);
 
 //---------- POEPLE ROUTING ------------//
 
 //GET request for creating people from
 router.get('/people/create', people_controller.people_create_get);
+
 //POST request for creating poeple form
 router.get('/people/create', people_controller.people_create_post);
+
 //GET request to delete poeple form
-router.get('/people/delete', people_controller.people_delete_get);
+router.get('/people/:id/delete', people_controller.people_delete_get);
+
 //POST request to delete popele form
-router.get('/people/delete', people_controller.people_delete_post);
+router.get('/people/:id/delete', people_controller.people_delete_post);
+
 //GET request to update poeple form
-router.get('/people/update', people_controller.people_update_get);
+router.get('/people/:id/update', people_controller.people_update_get);
+
 //POST request to update people form
-router.get('/people/update', people_controller.people_update_post);
+router.get('/people/:id/update', people_controller.people_update_post);
+
+//GET request for one poeple
+router.get('/people/:id', people_controller.people_detail);
+
+//GET request for list of all people
+router.get('/people', people_controller.people_list);
 
 
 //---------- VEHICLE ROUTES ----------// 
@@ -72,6 +90,11 @@ router.get('/vehicle/:id/update', vehicle_controller.vehicle_update_get);
 //POST request to update vehicle form
 router.post('/vehicle/:id/update', vehicle_controller.vehicle_update_post);
 
+//GET request for one vehicle
+router.get('/vehicle/:id', vehicle_controller.vehicle_detail);
+
+//GET request for list of all vehicle
+router.get('/vehicle', vehicle_controller.vehicle_list);
 
 
 
