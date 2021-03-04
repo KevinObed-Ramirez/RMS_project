@@ -169,7 +169,7 @@ exports.people_update_get = function (req, res, next) {
     });
 };
 
-exports.people_update_postb= [
+exports.people_update_post= [
     // Validate and sanitize fields.
     body('first_name').trim().isLength({ min: 1 }).escape().withMessage('First name must be specified.')
         .isAlphanumeric().withMessage('First name has non-alphanumeric characters.'),
