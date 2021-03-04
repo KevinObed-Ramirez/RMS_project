@@ -2,7 +2,7 @@ var People = require('../models/people');
 // var async = require('async');
 var Incident = require('../models/incident');
 
- const { body,validationResult } = require('express-validator')
+const { body,validationResult } = require('express-validator')
 
 exports.people_list = function (req, res, next) {
 

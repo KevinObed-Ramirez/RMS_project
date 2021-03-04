@@ -1,7 +1,7 @@
 var People = require('../models/people'); 
 var Incident = require('../models/incident'); 
 var Vehicle = require('../models/vehicle'); 
-const { validationResult } = require('express-validator');
+const { body, validationResult } = require('express-validator');
 // var async = require('async');
 
 

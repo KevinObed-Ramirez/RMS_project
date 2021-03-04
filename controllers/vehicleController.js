@@ -63,7 +63,7 @@ exports.vehicle_create_post = [
 
         // Create a genre object with escaped and trimmed data.
         var vehicle = new Vehicle(
-           { vehicle_make:req.body.vehicle_make,
+        {   vehicle_make:req.body.vehicle_make,
             vehicle_model:req.body.vehicle_model,
             vehicle_plate:req.body.vehicle_plate,
             vehicle_year:req.body.vehicle_year,
