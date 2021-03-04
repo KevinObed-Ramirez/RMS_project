@@ -1,6 +1,6 @@
-var people = require('../models/people');
+var People = require('../models/people');
 // var async = require('async');
-var incident = require('../models/incident');
+var Incident = require('../models/incident');
 
  const { body,validationResult } = require('express-validator')
 
@@ -66,7 +66,7 @@ exports.person_create_post = [
         const errors = validationResult(req);
         
         // Create Author object with escaped and trimmed data
-        var author = new Author(
+        var people = new People(
             {
                 first_name: req.body.first_name,
                 middle_name: req.body.middle_name,
@@ -109,7 +109,7 @@ exports.people_delete_get = function (req, res, next) {
             People.findById(req.params.id).exec(callback)
         },
         people_incident: function (callback) {
-            incident.find({ 'people': req.params.id }).exec(callback)
+            Incident.find({ 'people': req.params.id }).exec(callback)
         },
     }, function (err, results) {
         if (err) { return next(err); }
@@ -130,7 +130,7 @@ exports.people_delete_post = function (req, res, next) {
             People.findById(req.body.peopleid).exec(callback)
         },
         people_incident: function (callback) {
-            incident.find({ 'people': req.body.peopleid }).exec(callback)
+            Incident.find({ 'people': req.body.peopleid }).exec(callback)
         },
     }, function (err, results) {
         if (err) { return next(err); }
@@ -186,8 +186,8 @@ exports.people_update_postb= [
         // Extract the validation errors from a request.
         const errors = validationResult(req);
         
-        // Create Author object with escaped and trimmed data
-        var author = new Author(
+        // Create people object with escaped and trimmed data
+        var people = new People(
             {
                 first_name: req.body.first_name,
                 middle_name: req.body.middle_name,
@@ -213,7 +213,7 @@ exports.people_update_postb= [
             // Data from form is valid.
 
             // Save author.
-            people.save(function (err) {
+            People.save(function (err) {
                 if (err) { return next(err); }
                 // Successful - redirect to new author record.
                 res.redirect(people.url);
