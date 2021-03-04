@@ -18,7 +18,7 @@ var app = express();
 
 //Set up mongoose connection
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://KoolSwag44:ineedthemoney@cluster0.inuc5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const uri = "mongodb+srv://John:givemethemoney@Cluster0.inuc5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 client.connect(err => {
   const collection = client.db("test").collection("devices");
