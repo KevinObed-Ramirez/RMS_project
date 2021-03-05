@@ -44,7 +44,7 @@ exports.vehicle_detail = function (req, res, next) {
 };
 
 // Display Vehicle create form on GET.
-exports.vehicle_create_get = function (req, res, next) {
+exports.vehicle_create_get = function (req,res) {
     res.render('vehicle_form', { title: 'Create Vehicle' });
 };
 
@@ -196,7 +196,7 @@ exports.vehicle_update_post = [
                 vehcile_vin:req.body.vehcile_vin,
                 vehicle_details:req.body.vehicle_details,
                 vehicle_reg:req.body.vehicle_reg,
-                vehicle_body:req.body.vehicle_body,
+                vehicle_body:req.body.vehicle_body,re
             }
         );
 
