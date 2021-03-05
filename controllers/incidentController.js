@@ -184,28 +184,33 @@ exports.inc_delete_get = function (req, res, next){
 };
 
 //handle incident delete on POST???????
-// exports.inc_delete_post = function(req, res, next){
-//     //asume the post has valid id (ie no validation/sanitation)
+exports.inc_delete_post = function(req, res, next){
+    //asume the post has valid id (ie no validation/sanitation)
 
-//     async.parallel({
-//         incident: function(callback){
-//             Incident.findById(req.body.id).populate('people').populate('vehicle').exec(callback);
-//         },
-//         //book instance 193:9
-//     }, function(err, results){
-//         if(err) {return next(err);}
-//         //success
-//         // success if satement for book instance 199:9
-//         // {res.render('inc_delete', {
-//         //     title: 'Delete Incident',
-//         //     incident: results.book,
-//         //     //book instances: result.#
-//         //     });
-//         //     return
-//         // }
-        
-//     });
-// };
+    async.parallel({
+        incident: function(callback){
+            Incident.findById(req.body.id).populate('people').populate('vehicle').exec(callback);
+        },
+        //book instance 193:9
+    }, function(err, results){
+        if(err) {return next(err);}
+        // success
+        if(results.incident.length > 0){
+            res.render('inc_delete', {
+            title: 'Delete Incident',
+            incident: results.incident,
+            });
+            return;
+        }
+        else{
+            Incident.findByIdAndRemove(req.body.id, function deleteBook(err){
+                if(err){ return next(err); }
+                //success - got to books list
+                res.redirect('/catalog/books');
+            });
+        }
+    });
+};
 
 //display book update from on GET 
 exports.inc_update_get = function(req, res, next){
