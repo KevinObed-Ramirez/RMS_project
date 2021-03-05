@@ -1,5 +1,4 @@
 var Vehicle = require('../models/vehicle');
-
 var Incident = require('../models/incident');
 
 const { body, validationResult } = require("express-validator");
