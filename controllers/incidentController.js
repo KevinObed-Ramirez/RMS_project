@@ -5,24 +5,7 @@ const { body, validationResult } = require('express-validator');
 
 
 exports.index = function(req, res){
-    async.parallel({
-        inc_count: function(callback){
-            Incident.countDocuments({}, callback);
-        },
-        vehicle_count: function(callback){
-            Vehicle.countDocuments({}, callback);
-        },
-        people_count: function (callback){
-            People.countDocuments({}, callback);
-        }
-    }, function(err, result){
-        res.render('index', {
-            title: 'Something Random',
-            error: err,
-            error: err, 
-            data: results
-        });
-    });
+    res.render('index')
 };
 //display list of all incidents
 exports.inc_list = function(req, res, next){

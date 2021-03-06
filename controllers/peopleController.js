@@ -17,26 +17,7 @@ exports.people_list = function (req, res, next) {
 
 // Display detail page for a specific Person.
 exports.people_detail = function (req, res, next) {
-
-    async.parallel({
-        people: function (callback) {
-            people.findById(req.params.id)
-                .exec(callback)
-        },
-        people_incident: function (callback) {
-            incident.find({ 'people': req.params.id }, 'Incident summary')
-                .exec(callback)
-        },
-    }, function (err, results) {
-        if (err) { return next(err); } // Error in API usage.
-        if (results.people == null) { // No results.
-            var err = new Error('Person not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Successful, so render.
-        res.render('people_detail', { title: 'People Detail', people: results.people, people_incident: results.people_incident });
-    });
+        res.render('people_detail');
 
 };
 

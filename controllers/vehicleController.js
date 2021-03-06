@@ -19,28 +19,7 @@ exports.vehicle_list = function (req, res, next) {
 // Display detail page for a specific Vehicle.
 exports.vehicle_detail = function (req, res, next) {
 
-    async.parallel({
-        vehicle: function (callback) {
-            Vehicle.findById(req.params.id)
-                .exec(callback);
-        },
-
-        vehicle_incident: function (callback) {
-            incident.find({ 'vehicle': req.params.id })
-                .exec(callback);
-        },
-
-    }, function (err, results) {
-        if (err) { return next(err); }
-        if (results.vehicle == null) { // No results.
-            var err = new Error('Vehicle not found');
-            err.status = 404;
-            return next(err);
-        }
-        // Successful, so render
-        res.render('vehicle_detail', { title: 'Vehicle Detail', vehicle: results.vehicle, vehicle_incident: results.vehicle_incident });
-    });
-
+        res.render('vehicle_detail');
 };
 
 // Display Vehicle create form on GET.
