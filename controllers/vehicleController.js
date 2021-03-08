@@ -87,36 +87,22 @@ exports.vehicle_create_post = [
 // Display Vehicle delete form on GET.
 exports.vehicle_delete_get = function (req, res, next) {
 
-    async.parallel({
-        vehicle: function (callback) {
-            Vehicle.findById(req.params.id).exec(callback);
-        },
-        vehicle_books: function (callback) {
-            Incident.find({ 'vehicle': req.params.id }).exec(callback);
-        },
-    }, function (err, results) {
-        if (err) { return next(err); }
-        if (results.vehicle == null) { // No results.
-            res.redirect('/catalog/vehicle');
-        }
+    // function (err, results) {
+    //     if (err) { return next(err); }
+    //     if (results.vehicle == null) { // No results.
+    //         res.redirect('/catalog/vehicle');
+    //     }
         // Successful, so render.
         res.render('vehicle_delete', { title: 'Delete Vehicle', vehicle: results.vehicle, vehicle_incident: results.vehicle_incident });
-    });
+    };
 
-};
+// };
 
 // Handle Vehicle delete on POST.
 exports.vehicle_delete_post = function (req, res, next) { 
 
-    async.parallel({
-        vehicle: function (callback) {
-            Vehicle.findById(req.params.id).exec(callback);
-        },
-        vehicle_incident: function (callback) {
-            Incident.find({ 'vehicle': req.params.id }).exec(callback);
-        },
-    }, function (err, results) {
-        if (err) { return next(err); }
+    // function (err, results) {
+    //     if (err) { return next(err); }
         // Success
         if (results.vehicle_books.length > 0) {
             // Genre has books. Render in same way as for GET route.
@@ -132,9 +118,9 @@ exports.vehicle_delete_post = function (req, res, next) {
             });
 
         }
-    });
+    };
 
-};
+
 
 // Display Vehicle update form on GET.
 exports.vehicle_update_get = function (req, res, next) {

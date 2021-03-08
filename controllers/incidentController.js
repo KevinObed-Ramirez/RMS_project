@@ -23,14 +23,7 @@ exports.inc_list = function(req, res, next){
 
 //dispay detail page for a specific incident
 exports.inc_detail = function (req, res, next){
-    async.parallel({
-        incident: function(callback){
-            Incident.findById(req.params.id)
-            .populate('people')
-            .populate('vehicle')
-            .exec(callback);
-        },
-    }, function (err, results) {
+    // function (err, results) {
         if (err) { return next(err); }
         if (results.incident == null){ //no result
             var err = new Error('Incident not found');
@@ -42,26 +35,19 @@ exports.inc_detail = function (req, res, next){
             title: results.incident.title, 
             incident: results.incident, 
         });
-    });
+    // };
 };
 
 //display incident create from on GET
 exports.inc_create_get = function(req, res, next){
-    async.parallel({
-        people: function (callback){
-            People.find(callback);
-        },
-        vehicle: function(callback){
-            Vehicle.find(callback);
-        },
-    }, function (err, result){
+    // function (err, result){
         if(err){ return next(err); }
         res.render('inc_form', {
             title: 'New Incident',
             people: result.people,
             vehicle: results.vehicle
         });
-    });
+    // }
 };
 
 
@@ -106,14 +92,7 @@ exports.inc_create_post = [
             // There are errors. Render form again with sanitized values/error messages.
 
             //get all poeple and vehicles for form
-            async.parallel({
-                people: function(callback){
-                    People.find(callback);
-                },
-                vehicle: function(callback){
-                    Vehicle.find(callback);
-                },
-            }, function(err, result){
+            // function(err, result){
                 if (err) { return next(err); }
 
                 // mark our selected vehicles as checked
@@ -129,7 +108,7 @@ exports.inc_create_post = [
                     incident: incident,
                     errors: errors.array() 
                 });
-            });
+            // };
             return;
         }
         else{
@@ -146,12 +125,7 @@ exports.inc_create_post = [
 //display incident delete form on GET
 exports.inc_delete_get = function (req, res, next){
 
-    async.parallel({
-        incident: function(callback){
-            Incident.findById(req.params.id).populate('people').populate('vehicle').exec(callback);
-        },
-        //book instance whatever that may be, 170:9
-    }, function(err, results){
+    // function(err, results){
         if(err) {return next(err);}
         if(results.book == null){ //no result
             res.redirect('/catalog/incidents');
@@ -162,19 +136,14 @@ exports.inc_delete_get = function (req, res, next){
             book: results.book, 
             //book instance replacement 176:45
         });
-    });
+    // };
 };
 
 //handle incident delete on POST???????
 exports.inc_delete_post = function(req, res, next){
     //asume the post has valid id (ie no validation/sanitation)
 
-    async.parallel({
-        incident: function(callback){
-            Incident.findById(req.body.id).populate('people').populate('vehicle').exec(callback);
-        },
-        //book instance 193:9
-    }, function(err, results){
+    // function(err, results){
         if(err) {return next(err);}
         // success
         if(results.incident.length > 0){
@@ -191,24 +160,14 @@ exports.inc_delete_post = function(req, res, next){
                 res.redirect('/catalog/books');
             });
         }
-    });
+    // };
 };
 
 //display book update from on GET 
 exports.inc_update_get = function(req, res, next){
 
     //get incident, poeple, and vehicles for form
-    async.parallel({
-        incident: function (callback){
-            Incident.findById(req.params.id).populate('people').populate('vehicle').exec(callback);
-        },
-        people: function(callback){
-            People.find(callback);
-        },
-        vehicle: function(callback){
-            Vehicle.find(callback);
-        },
-    }, function (err, results){
+    // function (err, results){
         if(err) {return next(err);}
         if(results.incident == null){ //no results
             var err = new Error('Incident not found');
@@ -230,7 +189,7 @@ exports.inc_update_get = function(req, res, next){
             vehicle: results.vehicle, 
             incident: results.incident
         });
-    });
+    // };
 };
 
 //handle incident update on POST
@@ -272,15 +231,7 @@ exports.inc_update_post = [
         if(!errors.isEmpty()){
             // there are errors. render from again with sanitized values/error messages
 
-            //get all authors and vehicles for from
-            async.parallel({
-                poeple: function(callback){
-                    People.find(callback);
-                },
-                vehicle: function(callback){
-                    Vehicle.find(callback);
-                },
-            }, function(err, results){
+            // function(err, results){
                 if(err) {return next(err); }
 
                 //mark out selected vehicles as checked
@@ -296,7 +247,7 @@ exports.inc_update_post = [
                     incident: incident,
                     errors: errors.array()
                 });
-            });
+            // };
             return;
         }
         else{
