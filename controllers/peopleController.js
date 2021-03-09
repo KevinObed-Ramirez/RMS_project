@@ -84,7 +84,7 @@ exports.people_create_post = [
 // Display Person delete form on GET.
 exports.people_delete_get = function (req, res, next) {
 
-    function (err, results) {
+    //function (err, results) {
         if (err) { return next(err); }
         if (results.author == null) { // No results.
             res.redirect('/catalog/people');
@@ -93,12 +93,11 @@ exports.people_delete_get = function (req, res, next) {
         res.render('people_delete', { title: 'Delete Person', people: results.people, people_incident: results.people_incident });
     };
 
-};
 
 // Handle People delete on POST.
 exports.people_delete_post = function (req, res, next) {
 
-     function (err, results) {
+    // function (err, results) {
         if (err) { return next(err); }
         // Success.
         if (results.people_incident.length > 0) {
@@ -117,7 +116,7 @@ exports.people_delete_post = function (req, res, next) {
         }
     };
 
-};
+
 
 // Display Person update form on GET.
 exports.people_update_get = function (req, res, next) {
