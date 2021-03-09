@@ -85,10 +85,10 @@ exports.people_create_post = [
 exports.people_delete_get = function (req, res, next) {
 
     // function (err, results) {
-    //     if (err) { return next(err); }
-    //     if (results.author == null) { // No results.
-    //         res.redirect('/catalog/people');
-    //     }
+        if (err) { return next(err); }
+        if (results.author == null) { // No results.
+            res.redirect('/catalog/people');
+        }
         // Successful, so render.
         res.render('people_delete', { title: 'Delete Person', people: results.people, people_incident: results.people_incident });
     // };
