@@ -91,15 +91,14 @@ exports.people_delete_get = function (req, res, next) {
         }
         // Successful, so render.
         res.render('people_delete', { title: 'Delete Person', people: results.people, people_incident: results.people_incident });
-    // };
+    };
 
-};
 
 // Handle People delete on POST.
 exports.people_delete_post = function (req, res, next) {
 
     // function (err, results) {
-    //     if (err) { return next(err); }
+        if (err) { return next(err); }
         // Success.
         if (results.people_incident.length > 0) {
             // People have incedents. Render in same way as for GET route.
@@ -115,9 +114,9 @@ exports.people_delete_post = function (req, res, next) {
             })
 
         }
-    // };
+    };
 
-};
+
 
 // Display Person update form on GET.
 exports.people_update_get = function (req, res, next) {
