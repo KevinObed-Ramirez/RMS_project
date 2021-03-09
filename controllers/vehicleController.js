@@ -87,21 +87,21 @@ exports.vehicle_create_post = [
 // Display Vehicle delete form on GET.
 exports.vehicle_delete_get = function (req, res, next) {
 
-    function (err, results) {
+    // function (err, results) {
         if (err) { return next(err); }
         if (results.vehicle == null) { // No results.
             res.redirect('/catalog/vehicle');
         }
         // Successful, so render.
         res.render('vehicle_delete', { title: 'Delete Vehicle', vehicle: results.vehicle, vehicle_incident: results.vehicle_incident });
-    };
+    // };
 
-// };
+};
 
 // Handle Vehicle delete on POST.
 exports.vehicle_delete_post = function (req, res, next) { 
 
-     function (err, results) {
+    //  function (err, results) {
         if (err) { return next(err); }
         // Success
         if (results.vehicle_books.length > 0) {
