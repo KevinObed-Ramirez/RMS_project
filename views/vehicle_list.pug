@@ -1,8 +1,13 @@
-html
-  body
-    script(src=‘https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js’)
-    script.
-      function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-      }
-      window.addEventListener(‘load’, addDarkmodeWidget);
+extends layout
+
+block content
+  h1= title
+
+  ul
+    each vehicle in vehicle_list
+      li
+        a(href=vehicle.url) #{vehicle.model} 
+        |   (#{vehicle.make})
+
+    else 
+      li There are no vehicles.

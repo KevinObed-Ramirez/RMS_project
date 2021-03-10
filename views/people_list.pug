@@ -1,8 +1,12 @@
-html
-  body
-    script(src=‘https://cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js’)
-    script.
-      function addDarkmodeWidget() {
-      new Darkmode().showWidget();
-      }
-      window.addEventListener(‘load’, addDarkmodeWidget);
+extends layout 
+
+block content 
+  h1= title
+
+  ul
+    each people in people_list
+      li
+        a(href=people.url) #{people.name}
+
+    else
+      li There are no people.
