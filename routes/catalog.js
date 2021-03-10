@@ -4,7 +4,7 @@ var express = require('express');
 var router = express.Router();
 
 //require mods
-var login_controller = require('../controllers/loginController');
+// var login_controller = require('../controllers/loginController');
 var incident_controller = require('../controllers/incidentController');
 var people_controller = require('../controllers/peopleController');
 var vehicle_controller = require('../controllers/vehicleController');
