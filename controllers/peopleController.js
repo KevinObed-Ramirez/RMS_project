@@ -71,7 +71,7 @@ exports.people_create_post = [
         else {
             // Data from form is valid.
 
-            // Save author.
+            // Save people.
             people.save(function (err) {
                 if (err) { return next(err); }
                 // Successful - redirect to new author record.

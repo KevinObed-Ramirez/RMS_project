@@ -1,79 +1,82 @@
-//- html
-//-   body
-//-     //- script(src=‘https:cdn.jsdelivr.net/npm/darkmode-js@1.5.7/lib/darkmode-js.min.js’)
-//-     //- script.
-//-     //-   function addDarkmodeWidget() {
-//-     //-   new Darkmode().showWidget();
-//-     //-   }
-//-     //-   window.addEventListener(‘load’, addDarkmodeWidget);
-//- h1
-//-   header(style="text-align: center;") Narritive
-//- form(class="row g-3 needs-validation", novalidate)
-//- div(class="col-3", style="margin-left: 400px;")
-//-   button(class="btn btn-primary", type="submit") Back
-//- div(class="col-3", style="margin-left: 950px;")
-//-   button(class="btn btn-primary", type="submit") Submit
-//- div(class="mb-1")
-//-   label(for="exampleFormControlTextarea1", class="form-label")
-//-   textarea#exampleFormControlTextarea1(class="form-control", rows="6")
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom02", class="form-label") Officer
-//-   input#validationCustom02(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom05", class="form-label") Serial#
-//-   input#validationCustom05(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom05", class="form-label") Date
-//-   input#validationCustom05(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom01", class="form-label") Time
-//-   input#validationCustom01(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom02", class="form-label") Supp
-//-   input#validationCustom02(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom01", class="form-label") Serial#
-//-   input#validationCustom01(type="text", class="form-control", required)
-//- div(class="col-sm-3 mx-auto")
-//-   label(for="validationCustom02", class="form-label") Date
-//-   input#validationCustom02(type="text", class="form-control", required)
+doctype html
+html(lang='en')
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", crossorigin="anonymous")
+    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js", integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+
+h1
+  header(style="text-align: center;") Narritive
+form(class="row g-3 needs-validation", novalidate)
+div(class="col-3", style="margin-left: 400px;")
+  button(class="btn btn-primary", type="submit") Back
+div(class="col-3", style="margin-left: 950px;")
+  button(class="btn btn-primary", type="submit") Submit
+div(class="mb-1")
+  label(for="exampleFormControlTextarea1", class="form-label")
+  textarea#exampleFormControlTextarea1(class="form-control", rows="6")
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom02", class="form-label") Officer
+  input#validationCustom02(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom05", class="form-label") Serial#
+  input#validationCustom05(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom05", class="form-label") Date
+  input#validationCustom05(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom01", class="form-label") Time
+  input#validationCustom01(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom02", class="form-label") Supp
+  input#validationCustom02(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom01", class="form-label") Serial#
+  input#validationCustom01(type="text", class="form-control", required)
+div(class="col-sm-3 mx-auto")
+  label(for="validationCustom02", class="form-label") Date
+  input#validationCustom02(type="text", class="form-control", required)
 
 
 
-extends layout
+//- extends layout
 
-block content
-  h1= title
+//- block content
+//-   h1= title
 
-  form(method='POST' action='')
-    div.form-group
-      label(for='title') Title:
-      input#title.form-control(type='text', placeholder='Name of incident' name='title' required='true' value=(undefined===incident ? '' : incident.title) )
-    div.form-group
-      label(for='people') People:
-      select#people.form-control(type='select', placeholder='Select Person' name='person' required='true' )
-        - people.sort(function(a, b) {let textA = a.last_name.toUpperCase(); let textB = b.first_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
-        for people in people
-          if incident
-            option(value=people._id selected=(people._id.toString()===incident.people._id.toString() ? 'selected' : false) ) #{people.name}
-          else
-            option(value=people._id) #{people.name}
-    div.form-group
-      label(for='summary') Summary:
-      input#summary.form-control(type='textarea', placeholder='Summary' name='summary' value=(undefined===incident ? '' : incident.summary) required='true')
-    div.form-group
-      label(for='irn') IRN :
-      input#irn.form-control(type='text', placeholder='IRN' name='irn' value=(undefined===incident ? '' : incident.irn) required='true') 
-    div.form-group
-      label Vehicle:
-      div
-        for vehicle in vehicle
-          div(style='display: inline; padding-right:10px;')
-            input.checkbox-input(type='checkbox', name='vehicle', id=vehicle._id, value=vehicle._id, checked=vehicle.checked )
-            label(for=vehicle._id) #{vehicle.name}
-    button.btn.btn-primary(type='submit') Submit
+//-   form(method='POST' action='')
+//-     div.form-group
+//-       label(for='title') Title:
+//-       input#title.form-control(type='text', placeholder='Name of incident' name='title' required='true' value=(undefined===incident ? '' : incident.title) )
+//-     div.form-group
+//-       label(for='people') People:
+//-       select#people.form-control(type='select', placeholder='Select Person' name='person' required='true' )
+//-         - people.sort(function(a, b) {let textA = a.last_name.toUpperCase(); let textB = b.first_name.toUpperCase(); return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;});
+//-         for people in people
+//-           if incident
+//-             option(value=people._id selected=(people._id.toString()===incident.people._id.toString() ? 'selected' : false) ) #{people.name}
+//-           else
+//-             option(value=people._id) #{people.name}
+//-     div.form-group
+//-       label(for='summary') Summary:
+//-       input#summary.form-control(type='textarea', placeholder='Summary' name='summary' value=(undefined===incident ? '' : incident.summary) required='true')
+//-     div.form-group
+//-       label(for='irn') IRN :
+//-       input#irn.form-control(type='text', placeholder='IRN' name='irn' value=(undefined===incident ? '' : incident.irn) required='true') 
+//-     div.form-group
+//-       label Vehicle:
+//-       div
+//-         for vehicle in vehicle
+//-           div(style='display: inline; padding-right:10px;')
+//-             input.checkbox-input(type='checkbox', name='vehicle', id=vehicle._id, value=vehicle._id, checked=vehicle.checked )
+//-             label(for=vehicle._id) #{vehicle.name}
+//-     button.btn.btn-primary(type='submit') Submit
 
-  if errors 
-    ul
-      for error in errors
-        li!= error.msg
+//-   if errors 
+//-     ul
+//-       for error in errors
+//-         li!= error.msg
