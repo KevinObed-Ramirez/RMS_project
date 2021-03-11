@@ -8,16 +8,20 @@ var Schema = mongoose.Schema;
 var PeopleSchema = new Schema(
     {
         first_name: { type: String, required: true, maxlength: 100 },
+        nickname: { type: String, require: true, maxlength: 100 },
         middle_name: { type: String, required: true, maxlength: 100 },
         last_name: { type: String, required: true, maxlength: 100 },
         phone_number:{type: String, required: true, maxlength: 10},
-        date_of_birth: { type: Date },
+        date_of_birth: { type: Date, require: true},
         date_of_death: { type: Date },
         height: {type: String, required: true, maxlength: 3},
         weight: {type: String, required: true, maxlength: 3},
         unique_markings:{type: String, maxlength: 100},
         social_security:{type: String, maxlength:9},
-        gang_affil:{type: String, maxlength:9}
+        gang_affil:{type: String, maxlength:9},
+        home_phone: { type: String, maxlength: 10, require: true},
+        address: {type: String, maxlength:200, require: true},
+        hazard: {type: String, maxlength: 1000}
         
     }
 );

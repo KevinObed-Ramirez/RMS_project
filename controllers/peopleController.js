@@ -1,5 +1,6 @@
 var People = require('../models/people');
 var Incident = require('../models/incident');
+var async = require('async');
 
 const { body,validationResult } = require('express-validator')
 
@@ -15,10 +16,33 @@ exports.people_list = function (req, res, next) {
 
 };
 
-// Display detail page for a specific Person.
-exports.people_detail = function (req, res, next) {
-        res.render('people_detail');
+// // Display detail page for a specific Person.
+// exports.people_detail = function (req, res, next) {
+//         res.render('people_detail');
 
+// };
+
+exports.people_detail = function (req, res, next) {
+    async.parallel({
+        people: function (callback) {
+            People.findById(req.params.id)
+                .exec(callback)
+        },
+        // peoples_incident: function (callback) {
+        //     Vehicle.find({ 'people': req.params.id }, 'title summary')
+        //         .exec(callback)
+        // },
+    }, function (err, results) {
+        if (err) { return next(err); } // Error in API usage.
+        if (results.people == null) { // No results.
+            var err = new Error('Person not found');
+            err.status = 404;
+            return next(err);
+        }
+        // Successful, so render.
+        res.render('people_detail', { title: 'Person Detail', people: results.people //, people_incident: results.peoples_incident 
+    });
+    });
 };
 
 // Display Person create form on GET.

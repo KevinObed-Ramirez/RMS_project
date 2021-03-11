@@ -4,6 +4,7 @@ var Vehicle = require('../models/vehicle');
 const { body, validationResult } = require('express-validator');
 
 
+
 exports.index = function(req, res){
     res.render('index')
 };

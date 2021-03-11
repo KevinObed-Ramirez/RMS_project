@@ -1,168 +1,160 @@
-doctype html
-html(lang='en')
-  head
-    title= title
-    meta(charset='utf-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css", integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z", crossorigin="anonymous")
-    script(src="https://code.jquery.com/jquery-3.5.1.slim.min.js", integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj", crossorigin="anonymous")
-    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js", integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV", crossorigin="anonymous")
-    link(rel='stylesheet', href='/stylesheets/style.css')
+extends layout
 
-h1
-  header(style="text-align: center;") Police Department Report Form
-form(class="row g-3")
-  
-  div(class="col-md-1")
-    label(for="validationServer01" class="form-label")
-    input#validationServer01(type="text" class="form-control" value="001", required)
-  
-  div(class="col-12")
-    button(class="btn btn-primary" type="submit" style="margin-left: 950px;") Submit form
-  
-  div(class="col-md-1")
-    label(for="validationServer08" class="form-label")
-    input#validationServer08(type="text" class="form-control" value="Code", required)
+block content
+  h1
+    header(style="text-align: center;") Police Department Report Form
+  form(class="row g-3")
+    
+    div(class="col-md-1")
+      label(for="validationServer01" class="form-label")
+      input#validationServer01(type="text" class="form-control" value="001", required)
+    
+    div(class="col-12")
+      button(class="btn btn-primary" type="submit" style="margin-left: 950px;") Submit form
+    
+    div(class="col-md-1")
+      label(for="validationServer08" class="form-label")
+      input#validationServer08(type="text" class="form-control" value="Code", required)
 
-  div(class="col-md-3")
-    label(for="validationServer01" class="form-label")
-    input#validationServer01(type="text" class="form-control" value="First", required)
+    div(class="col-md-3")
+      label(for="validationServer01" class="form-label")
+      input#first_name(type="text" class="form-control" value="First", required)
 
-  div(class="col-md-3")
-    label(for="validationServer07" class="form-label")
-    input#validationServer07(type="text" class="form-control" value="Nickname", required)
-  
-  div(class="col-md-3")
-    label(for="validationServer02" class="form-label")
-    input#validationServer02(type="text" class="form-control" value="Last", required)
-  
-  div(class="col-md-1")
-    label(for="validationServer03" class="form-label")
-    input#validationServer03(type="text" class="form-control" value="Middle Inital", required) 
-
-  div(class="text-left")
-    img(src="download.jpeg" class="rounded float-left" alt="Picture of the person")
-  
-  div(class="col-md-2")
-    label(for="validationServerUsername" class="form-label")
-    div(class="input-group has-validation")
+    div(class="col-md-3")
+      label(for="validationServer07" class="form-label")
+      input#nickname(type="text" class="form-control" value="Nickname", required)
+    
+    div(class="col-md-3")
       label(for="validationServer02" class="form-label")
-      input#validationServerUsername(type="text" class="form-control is-invalid" value="Date of Birth" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback", required)
-  
-  div(class="col-md-2")
-    label(for="validationServer04" class="form-label")
-    input#validationServer04(type="text" class="form-control is-invalid" value="Phone Number" aria-describedby="validationServer04Feedback", required) 
-  
-  //- div(class="col-md-2")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  div(class="col-md-1")
-    label(for="validationServer05" class="form-label")
-    select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
-      option(selected, disabled, value="") Race
-      option black
-      option white
-      option mexican
+      input#last_name(type="text" class="form-control" value="Last", required)
+    
+    div(class="col-md-1")
+      label(for="validationServer03" class="form-label")
+      input#middle_name(type="text" class="form-control" value="Middle Inital", required) 
 
-  div(class="col-md-1")
-    label(for="validationServer05" class="form-label")
-    select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
-      option(selected, disabled, value="") Sex
-      option Male
-      option Female
-  div(class="col-md-1")
-    label(for="validationServer05" class="form-label")
-    select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
-      option(selected, disabled, value="") Hair
-      option BLK
-      option WHT
-      option BRO
+    div(class="text-left")
+      img(src="download.jpeg" class="rounded float-left" alt="Picture of the person")
+    
+    div(class="col-md-2")
+      label(for="validationServerUsername" class="form-label")
+      div(class="input-group has-validation")
+        label(for="validationServer02" class="form-label")
+        input#date_of_birth(type="text" class="form-control is-invalid" value="Date of Birth" aria-describedby="inputGroupPrepend3 validationServerUsernameFeedback", required)
+    
+    div(class="col-md-2")
+      label(for="validationServer04" class="form-label")
+      input#phone_number(type="text" class="form-control is-invalid" value="Phone Number" aria-describedby="validationServer04Feedback", required) 
+    
+    //- div(class="col-md-2")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    div(class="col-md-1")
+      label(for="validationServer05" class="form-label")
+      select#race(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
+        option(selected, disabled, value="") Race
+        option black
+        option white
+        option mexican
 
-  div(class="col-md-1")
-    label(for="validationServer05" class="form-label")
-    select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
-      option(selected, disabled, value="") Eyes
-      option BLK
-      option NONE
-      option BRO
+    div(class="col-md-1")
+      label(for="validationServer05" class="form-label")
+      select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
+        option(selected, disabled, value="") Sex
+        option Male
+        option Female
+    div(class="col-md-1")
+      label(for="validationServer05" class="form-label")
+      select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
+        option(selected, disabled, value="") Hair
+        option BLK
+        option WHT
+        option BRO
 
-  div(class="col-md-2")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Height" aria-describedby="validationServer06Feedback", required)
-  
-  div(class="col-md-2")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Weight" aria-describedby="validationServer06Feedback", required)
+    div(class="col-md-1")
+      label(for="validationServer05" class="form-label")
+      select#validationServer05(class="form-select is-invalid" aria-describedby="validationServer05Feedback", required) 
+        option(selected, disabled, value="") Eyes
+        option BLK
+        option NONE
+        option BRO
 
-  div(class="col-md-4")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Identifiers" aria-describedby="validationServer06Feedback", required)
+    div(class="col-md-2")
+      label(for="validationServer06" class="form-label")
+      input#height(type="text" class="form-control is-invalid" value="Height" aria-describedby="validationServer06Feedback", required)
+    
+    div(class="col-md-2")
+      label(for="validationServer06" class="form-label")
+      input#weight(type="text" class="form-control is-invalid" value="Weight" aria-describedby="validationServer06Feedback", required)
 
-  div(class="col-md-4")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Gang Affiliation" aria-describedby="validationServer06Feedback", required)
+    div(class="col-md-4")
+      label(for="validationServer06" class="form-label")
+      input#unique_markings(type="text" class="form-control is-invalid" value="Identifiers" aria-describedby="validationServer06Feedback", required)
 
-  div(class="col-md-7")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Address" aria-describedby="validationServer06Feedback", required)
-  
-  div(class="col-md-2")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Home Phone" aria-describedby="validationServer06Feedback", required)
-  
-  div(class="col-md-5")
-    label(for="validationServer06" class="form-label")
-    input#validationServer06(type="text" class="form-control is-invalid" value="Hazard" aria-describedby="validationServer06Feedback", required)
+    div(class="col-md-4")
+      label(for="validationServer06" class="form-label")
+      input#gang_affil(type="text" class="form-control is-invalid" value="Gang Affiliation" aria-describedby="validationServer06Feedback", required)
 
-  //- div(class="col-md-2")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer05(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-4")
-  //-   label(for="exampleFormControlTextarea1" class="form-label")
-  //-   textarea#exampleFormControlTextarea1(class="form-control" rows="1" style="background-color:brown; color: white;")
-  
-  //- div(class="col-md-5")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
-  
-  //- div(class="col-md-3")
-  //-   label(for="validationServer06" class="form-label")
-  //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    div(class="col-md-7")
+      label(for="validationServer06" class="form-label")
+      input#address(type="text" class="form-control is-invalid" value="Address" aria-describedby="validationServer06Feedback", required)
+    
+    div(class="col-md-2")
+      label(for="validationServer06" class="form-label")
+      input#home_phone(type="text" class="form-control is-invalid" value="Home Phone" aria-describedby="validationServer06Feedback", required)
+    
+    div(class="col-md-5")
+      label(for="validationServer06" class="form-label")
+      input#hazard(type="text" class="form-control is-invalid" value="Hazard" aria-describedby="validationServer06Feedback", required)
+
+    //- div(class="col-md-2")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer05(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-4")
+    //-   label(for="exampleFormControlTextarea1" class="form-label")
+    //-   textarea#exampleFormControlTextarea1(class="form-control" rows="1" style="background-color:brown; color: white;")
+    
+    //- div(class="col-md-5")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
+    
+    //- div(class="col-md-3")
+    //-   label(for="validationServer06" class="form-label")
+    //-   input#validationServer06(type="text" class="form-control is-invalid" aria-describedby="validationServer06Feedback", required)
