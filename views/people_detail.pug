@@ -1,0 +1,25 @@
+extends layout
+block content
+  div.row
+    div.col
+      p #{people.people_id}
+    div.col-6
+      p Police Report
+  div.row
+    div.col
+      p #{people.oc_date}
+    div.col
+      p #{people.oc_time}
+    div.col-6
+      p #{people.incident_type}
+  div.row
+    div.col
+      p #{people.local}
+    div.col
+      p #{people.c_local}
+  div.row
+    p #{people.add_p}
+  div.row
+    p #{people.add_v}
+  div.row
+    p #{people.narr}

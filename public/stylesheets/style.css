@@ -6,3 +6,29 @@ body {
 a {
   color: #00B7FF;
 }
+h1{
+  color: black;
+}
+
+
+.main-container{
+  text-align: center;
+  color: #4F8CC9;
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+  color: #4F8CC9;
+}
+
+.counter-color{
+  text-decoration: none;
+  list-style: none;
+  color: #4F8CC9;
+}
+
+.form-group{
+  color: #4f8cc9;
+}
