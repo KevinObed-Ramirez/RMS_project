@@ -2,106 +2,52 @@ extends layout
 
 block content
   h1
-    header(style="text-align: center;") Vehicle/bike Information
-      form(class="row g-3 needs-validation", novalidate)
-        div(class="col-3" style="margin-left: 1000px;")
-          button(class="btn btn-primary" type="submit") Submit form
-        div(class="col-sm-4 mx-auto")
-          label(for="validationCustom01" class="form-label") Vehicle #
-          input#validationCustom01(type="text" class="form-control" value="Mark", required)
-          div(class="valid-feedback")
-            | Looks good!
-        div(class="col-sm-4 mx-auto")
-          label(for="validationCustom02" class="form-label") Vin/Serial
-          input#validationCustom02(type="text" class="form-control" value="Otto", required)
-          div(class="valid-feedback")
-            | Looks good!
-        div(class="col-sm-4 mx-auto")
-          label(for="validationCustomUsername" class="form-label") License/State
-          div(class="input-group has-validation")
-            input#validationCustomUsername(type="text" class="form-control" aria-describedby="inputGroupPrepend", required)
-            div(class="invalid-feedback")
-              | Please choose a username.
-        div(class="col-sm-6 mx-auto")
-          label(for="validationCustom04" class="form-label") Makes
-          select#validationCustom04(class="form-select", required)
-            option(selected, disabled, value="") Choose
-            option Acura
-            option Alfa-Romeo
-            option Aston-Martin
-            option Audi
-            option Bentley
-            option BMW
-            option Bugatti
-            option Buick
-            option Cadillac
-            option Chevrolet
-            option Chrysler
-            option Citroen
-            option Dodge
-            option Ferrari
-            option Fiat
-            option Ford
-            option Geely
-            option Genesis
-            option GMC
-            option Honda
-            option Hyundai
-            option Ininiti
-            option Jaguar
-            option Jeep
-            option Kia
-            option Koenigsegg
-            option Lamborghini
-            option Lancia
-            option Land Rover
-            option Lexus
-            option Lincoln
-            option Lotus
-            option Maserati
-            option Maybach
-            option Mazda
-            option McLaren
-            option Mercedes
-            option Mini
-            option Mitsubishi
-            option Nissan
-            option Opel
-            option Pagani
-            option Peugeot
-            option Pontiac
-            option Porsche
-            option Ram
-            option Renault
-            option Roll-Royce
-            option Skoda
-            option Smart
-            option Subaru
-            option Susuki
-            option Tesla
-            option Toyota
-            option Volkswagen
-            option Volvo
-        div(class="col-sm-3 mx-auto")
-          label(for="validationCustom02" class="form-label") Year
-          input#validationCustom02(type="text" class="form-control" value="Otto", required)
-        div(class="col-sm-3 mx-auto")
-          label(for="validationCustom05" class="form-label") Model
-          input#validationCustom05(type="text" class="form-control", required)
-        div(class="col-sm-3 mx-auto")
-          label(for="validationCustom05" class="form-label") Style
-          input#validationCustom05(type="text" class="form-control", required)
-        div(class="col-sm-3 mx-auto")
-          label(for="validationCustom04" class="form-label") Color
-          select#validationCustom04(class="form-select", required)
-            option(selected, disabled, value="") Choose
-            option White
-            option Blue
-            option Red
-            option Silver
-            option Orange
-            option Green
-            option Bronze
-            option Yellow
-            option Grey
-            option Black
+    header(style="text-align: center;") West-Mec Vehicle Form
+  form(method='POST' action='')
+    div.row
+      div.col
+        div.form-group
+          label(for='plate_number') Plate Number:
+          input#plate_number.form-control(type='text', placeholder='Plate Number' name='plate_number' required='true' value=(undefined===vehicle ? '' : vehicle.plate_number) )
+      div.col
+        div.form-group
+          label(for='vehicle_color') Vehicle Color:
+          input#vehicle_color.form-control(type='text', placeholder='Vehicle Color' name='vehicle_color' required='true' value=(undefined===vehicle ? '' : vehicle.vehicle_color) )
+      div.col
+        div.form-group
+          label(for='vehicle_year') Vehicle Year:
+          input#vehicle_year.form-control(type='date', placeholder='Vehicle Year' name='vehicle_year' value=(undefined===vehicle ? '' : vehicle.vehicle_year) required='true')
+      div.col
+        div.form-group
+          label(for='vehicle_make') Vehicle Make:
+          input#vehicle_make.form-control(type='text', placeholder='Vehicle Make' name='vehicle_make' value=(undefined===vehicle ? '' : vehicle.vehicle_make) required='true')
+      div.col
+        div.form-group
+          label(for='vehicle_model') Vehicel Model:
+          input#vehicle_model.form-control(type='text', placeholder='Vehicle Model' name='vehicle_model' value=(undefined===vehicle ? '' : vehicle.vehicle_model) required='true')
+    div.row
+      div.col
+        div.form-group
+          label(for='vehicle_body_type') Vehicle Body Type:
+          input#vehicle_body_type.form-control(type='text', placeholder='Vehicle Body Type' name='vehicle_body_type' value=(undefined===vehicle ? '' : vehicle.vehicle_body_type) required='true')
+      div.col
+        div.form-group
+          label(for='vehicle_registration') Vehicle Registration:
+          input#vehicle_registration.form-control(type='text', placeholder='Vehicle Registration' name='vehicle_registration' value=(undefined===vehicle ? '' : vehicle.vehicle_registration) required='true')
+      div.col
+        div.form-group
+          label(for='vehicle_vin') Vehicle VIN:
+          input#vehicle_vin.form-control(type='text', placeholder='Vehicle Vin' name='vehicle_vin' value=(undefined===vehcile ? '' : vehicle.vehicle_vin) required='true')
+    div.row
+      div.col
+        div.form-group
+          label(for='vehicle_details') Vehicle Details:
+          input#vehicle_details.form-control(type='text', placeholder='Vehicle Details' name='vehicle_details' value=(undefined===vehicle ? '' : vehicle.vehicle_details) required='true')
+    div.row
+      div.col
+        button.btn.btn-primary(type='submit') Submit
+
+    if errors 
+      ul
+        for error in errors
+          li!= error.msg

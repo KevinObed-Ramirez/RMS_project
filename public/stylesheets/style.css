@@ -7,10 +7,14 @@ a {
   color: #00B7FF;
 }
 h1{
-  color: black;
+  color: #4f8cc9;
 }
-
-
+p{
+  color: #4F8CC9;
+}
+label{
+  color: #4F8CC9;
+}
 .main-container{
   text-align: center;
   color: #4F8CC9;
